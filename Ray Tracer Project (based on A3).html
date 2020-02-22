@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1 id="comp-4490-graphics-2-ray-tracing-project" style="background-color: #a0a0f0; border-bottom: thin solid; color: #323273; font-family: Helvetica, Arial, sans-serif; font-size: x-large; font-weight: bold; margin: 0; padding: 12px; text-align: center; width: 100%;" bgcolor="#A0A0F0" align="center" width="100%">COMP 4490 Graphics 2: Ray Tracing Project</h1>
+<p>To have your ray tracer count as a project, add features to your assignment 3 from each of the categories as described below. Submit it as your project, <em>do not</em> include the additional work in your regular assignment 3 submission.</p>
+<p>In order to demonstrate some of the techniques, you will need to use new scene (JSON) input files. You can modify the files you were given for assignment 3, or the files you have created, or new files you create. If you would like to generate more scenes from existing objects, please look at the posted Python script <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">obj2json.py</code> for converting <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">OBJ files</a> to our JSON meshes.</p>
+<p>If you have any other ideas for a technique to implement outside of the given list, please contact your instructor.</p>
+<p>Your submission must meet the following requirements:</p>
+<ul>
+<li>Use C/C++ with freeglut/glew/glm or another OpenGL environment with the consent of the instructor.</li>
+<li>Include a <strong>report</strong> that describes the features you implemented, how well they do (or do not) work, and citations of any external sources you consulted for information about those features. Remember that you can use information from those sources, but all code must be your own work.</li>
+<li>Electronically submit a copy of your project (code and report) in a single <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">.zip</code> file.</li>
+<li>Your submission <strong>must</strong> include all dependencies, and build and run correctly as downloaded using either a Makefile or a Visual Studio solution.</li>
+<li>Include enough <strong>scenes</strong> (JSON files) along with output (<strong>screenshots</strong> of the renderings from those files) to demonstrate all of the features of your ray tracer. In your report, list the <strong>rendering time</strong> (minutes and seconds) of each of the scenes on your system.</li>
+<li>Please consult with the instructor if you would like to make this a group project (at most two students per group).</li>
+</ul>
+<h3 id="feature-1-acceleration" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">Feature #1: Acceleration</h3>
+<p>Include <strong>one</strong> of the following acceleration features:</p>
+<ul>
+<li>Scanline assistance for rendering (use scanline rendering for a fast object hit test).</li>
+<li>Hybrid scanline-raytrace rendering (render the scene using scanline rendering, and then raytrace only objects that require it).</li>
+<li>Implement one acceleration data structure; either:
+<ul>
+<li>two-level nested grids; <em>or</em></li>
+<li>octrees; <em>or</em></li>
+<li>BSP trees; <em>or</em></li>
+<li>BVHs.</li>
+</ul>
+</li>
+</ul>
+<p>Note that the first two options will require a lot of work on the shaders. The third option can be implemented entirely in application (C) code.</p>
+<h3 id="feature-2-transformations" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">Feature #2: Transformations</h3>
+<p>Implement geometry transformations in your ray tracer. This could be <strong>either</strong>:</p>
+<ul>
+<li>allow the camera position and direction to change (add lookat to the camera); <em>or</em></li>
+<li>add a transformation to meshes that will be applied before rendering (including scale, rotation, and translation). Rotation can be done with Euler angles or quaternions. Note that the GLM library implements quaternions.</li>
+</ul>
+<p>Demonstrate this feature in your output by either rendering the same scene using different camera/object transformations (include screenshots for each, describing the transformation used), or by using a moving camera/object to generate scenes from an animation (make a movie).</p>
+<h3 id="feature-3-improved-quality" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">Feature #3: Improved Quality</h3>
+<p>Implement <strong>two</strong> of the following features to improve output quality:</p>
+<ul>
+<li>Add texture mapping support for meshes, using a texture read from an image. The image reading code can be very simple (use <code style="background-color: #ffffe8; font-family: Consolas, Courier, 'Courier New', monospace;" bgcolor="#FFFFE8">BMP</code> files) or you can include third-party code or a library (include the library and/or <strong>cite any code used</strong>). You will need to add <em>(u,v)</em> coordinates to the mesh data in the JSON file.</li>
+<li>Add <a href="https://en.wikipedia.org/wiki/Bump_mapping">bump mapping</a> or <a href="https://en.wikipedia.org/wiki/Displacement_mapping">displacement mapping</a>. See the note above regarding image reading code.</li>
+<li>Add <a href="https://en.wikipedia.org/wiki/Procedural_texture">procedural texture mapping support</a>.</li>
+<li>Implement Schlick's Approximation for refraction.</li>
+<li>Implement <a href="https://en.wikipedia.org/wiki/Beer%E2%80%93Lambert_law">Beer's Law</a> for shadow attenuation.</li>
+<li>Implement an <a href="https://en.wikipedia.org/wiki/Oren%E2%80%93Nayar_reflectance_model">Oren-Nayar diffuse reflectance model</a>.</li>
+<li>Implement a <a href="https://en.wikipedia.org/wiki/Specular_highlight#Ward_anisotropic_distribution">Ward anisotropic distribution or Cook-Torrance specular reflectance model</a>.</li>
+<li>Implement a <em>non-photorealistic</em> shading model such as cel shading, which can be enabled for specific primitives in your scene.</li>
+<li>Add refraction for one level of nested objects (e.g. you could make a "bubble" out of a sphere within a sphere).</li>
+</ul>
+<h3 id="feature-4-more-geometry" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">Feature #4: More Geometry</h3>
+<p>Implement <strong>one</strong> of the following additional geometry options:</p>
+<ul>
+<li>generic surfaces of revolution (like cylinders, cones, <em>and</em> toroids); <em>or</em></li>
+<li>CSG objects using union, intersection, and difference of other objects; <em>or</em></li>
+<li>a primitive based on a particle system (at a fixed state); <em>or</em></li>
+<li>Bezier patches or some similar parametric curved surfaces.</li>
+</ul>
+<p>None of these need to render with transmission.</p>
+<h3 id="feature-5-techniques" style="color: #408; font-size: medium; font-variant: small-caps; text-decoration: underline;">Feature #5: Techniques</h3>
+<p>Implement <strong>one</strong> of the following ray-tracing techniques:</p>
+<ul>
+<li>distribution ray tracing in order to achieve <strong>any two</strong> of these effects:
+<ul>
+<li>antialiasing; <em>or</em></li>
+<li>depth of field; <em>or</em></li>
+<li>area and/or mesh lighting; <em>or</em></li>
+<li>motion blur; <em>or</em></li>
+<li>glossy reflection; <em>or</em></li>
+</ul>
+</li>
+<li>path tracing; <em>or</em></li>
+<li>a Monte Carlo simulation to render a BSSRDF, <a href="http://graphics.stanford.edu/~henrik/papers/bssrdf/bssrdf.pdf">like this</a>.</li>
+</ul>
+</body>
+</html>
