@@ -1,4 +1,11 @@
 # Illumination-Simulation
+A project implementing graphic techniques including:
+1. Acceleration using octrees.
+2. Transformations
+3. Improved Quality using Schlick's Approximation for refraction and Oren-Nayar diffuse reflectance model.
+4. CSG objects using union, intersection, and difference of other objects.
+5. Antialiasing.
+6. Area lighting.
 
 # Steps to build (In Visual Studio):
 1. Open ```opengl.sln```. 
