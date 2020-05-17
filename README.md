@@ -1,3 +1,6 @@
+![GitHub Logo](https://github.com/powerseed/Illumination-Simulation/blob/master/Feature5_antialiasing_d.json.png)
+
+
 # Illumination-Simulation
 A project that implements graphic techniques including:
 1. Acceleration using octrees.
