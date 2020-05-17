@@ -1,5 +1,5 @@
 # Illumination-Simulation
-A project implementing graphic techniques including:
+A project that implements graphic techniques including:
 1. Acceleration using octrees.
 2. Transformations
 3. Improved Quality using Schlick's Approximation for refraction and Oren-Nayar diffuse reflectance model.
